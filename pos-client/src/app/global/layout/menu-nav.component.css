@@ -1,0 +1,34 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-container {
+  height: 95%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f3f3f3;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px; /* Ajusta el valor según lo que necesites */
+}
+
+span.list-items {
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+
+
+mat-button.button-flex {
+  display: flex;
+  justify-content: flex-start;
+}
+
+mat-list-item.mat-mdc-list-item.mdc-list-item.mat-mdc-list-item-interactive.mat-mdc-list-item-single-line.mdc-list-item--with-one-line {
+  height: 4rem;
+}
