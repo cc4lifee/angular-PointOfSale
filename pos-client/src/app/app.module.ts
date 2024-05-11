@@ -9,6 +9,9 @@ import { MenuNavComponent } from './global/layout/menu-nav.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { VentasComponent } from './pages/ventas/ventas.component';
+import { InventarioComponent } from './pages/inventario/inventario.component';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { ProveedoresComponent } from './pages/proveedores/proveedores.component';
 
 
 @NgModule({
@@ -17,6 +20,9 @@ import { VentasComponent } from './pages/ventas/ventas.component';
     MenuNavComponent,
     DashboardComponent,
     VentasComponent,
+    InventarioComponent,
+    CategoriasComponent,
+    ProveedoresComponent,
   ],
   imports: [
     BrowserModule,
