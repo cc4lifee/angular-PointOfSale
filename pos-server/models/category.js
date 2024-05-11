@@ -8,6 +8,11 @@ const CategorySchema = Schema(
     },
     description: String,
     products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+    usuario: {
+      required: true,
+      type: Schema.Types.ObjectId,
+      ref: "Usuario",
+    },
   },
   { collection: "categories" }
 );

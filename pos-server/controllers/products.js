@@ -1,7 +1,7 @@
 const { response } = require("express");
-const Category = require('../models/category');
-const Supplier = require('../models/supplier');
-const Product = require('../models/product');
+const Category = require("../models/category");
+const Supplier = require("../models/supplier");
+const Product = require("../models/product");
 
 const getProducts = async (req, res = response) => {
   const products = await Product.find();
@@ -14,26 +14,26 @@ const getProducts = async (req, res = response) => {
 
 const createProduct = async (req, res = response) => {
   const uid = req.uid;
+  const { category, supplier } = req.body;
   try {
-
-  const product = new Product({
-    usuario: uid,
-    ...req.body,
-  });
+    const product = new Product({
+      usuario: uid,
+      ...req.body,
+    });
 
     const productDB = await product.save();
 
-     // Actualizar la categoría asociada con el nuevo producto
-     const categoryToUpdate = await Category.findById(category);
-     categoryToUpdate.products.push(newProduct._id);
-     await categoryToUpdate.save();
- 
-     // Actualizar el proveedor asociado con el nuevo producto
-     const supplierToUpdate = await Supplier.findById(supplier);
-     supplierToUpdate.products.push(newProduct._id);
-     await supplierToUpdate.save();
+    // Actualizar la categoría asociada con el nuevo producto
+    const categoryToUpdate = await Category.findById(category);
+    categoryToUpdate.products.push(productDB._id);
+    await categoryToUpdate.save();
 
-    res.json({
+    // Actualizar el proveedor asociado con el nuevo producto
+    const supplierToUpdate = await Supplier.findById(supplier);
+    supplierToUpdate.products.push(productDB._id);
+    await supplierToUpdate.save();
+
+    res.status(201).json({
       ok: true,
       product: productDB,
     });
@@ -68,11 +68,10 @@ const updateProduct = async (req, res = response) => {
       { new: true }
     );
 
-
     res.json({
       ok: true,
       msg: "actualizarProduct",
-      product: productActualizado
+      product: productActualizado,
     });
   } catch (error) {
     console.log(error);
@@ -84,7 +83,6 @@ const updateProduct = async (req, res = response) => {
 };
 
 const deleteProduct = async (req, res = response) => {
-  
   const id = req.params.id;
 
   try {
@@ -101,9 +99,8 @@ const deleteProduct = async (req, res = response) => {
 
     res.json({
       ok: true,
-      msg: "Product Eliminado"
+      msg: "Product Eliminado",
     });
-
   } catch (error) {
     console.log(error);
     res.status(500).json({

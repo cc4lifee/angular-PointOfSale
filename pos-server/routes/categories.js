@@ -24,7 +24,7 @@ router.post(
   "/",
   [
     validarJWT,
-    check("nombre", "el nombre del categorie es necesario").notEmpty(),
+    check("name", "el nombre del categorie es necesario").notEmpty(),
     validarCampos,
   ],
   createCategory
@@ -35,7 +35,7 @@ router.put(
   "/:id",
   [
     validarJWT,
-    check("nombre", "el nombre del categorie es necesario").notEmpty(),
+    check("name", "el nombre del categorie es necesario").notEmpty(),
   ],
   updateCategory
 );

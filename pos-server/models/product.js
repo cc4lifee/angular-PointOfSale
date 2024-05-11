@@ -14,6 +14,11 @@ const ProductSchema = Schema(
     quantity: Number,
     category: { type: Schema.Types.ObjectId, ref: "Category" },
     supplier: { type: Schema.Types.ObjectId, ref: "Supplier" },
+    usuario: {
+      required: true,
+      type: Schema.Types.ObjectId,
+      ref: "Usuario",
+    },
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now },
   },

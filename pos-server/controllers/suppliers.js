@@ -13,21 +13,16 @@ const getSuppliers = async (req, res = response) => {
 
 const createSupplier = async (req, res = response) => {
   try {
-  const uid = req.uid;
-  
-  const supplier = new Supplier({
-    usuario: uid,
-    ...req.body,
-  });
+    const uid = req.uid;
+
+    const supplier = new Supplier({
+      usuario: uid,
+      ...req.body,
+    });
 
     const supplierDB = await supplier.save();
 
-     // Actualizar el producto asociada con la nueva categoria
-     const productToUpdate = await Product.findById(product);
-     productToUpdate.products.push(newProduct._id);
-     await productToUpdate.save();
-
-    res.json({
+    res.status(201).json({
       ok: true,
       category: supplierDB,
     });
