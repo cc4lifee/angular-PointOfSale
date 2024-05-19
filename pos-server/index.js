@@ -16,7 +16,6 @@ app.use(express.static("public"));
 app.use(express.json());
 
 // Base de datos
-
 dbConnection();
 
 // Rutas
