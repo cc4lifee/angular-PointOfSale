@@ -1,0 +1,44 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .custom-drawer {
+    width: 14rem; /* Ajusta este valor según el tamaño deseado */
+  }
+  
+  .example-container {
+    height: 95%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #f3f3f3;
+  }
+  
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px; /* Ajusta el valor según lo que necesites */
+  }
+  
+  span.list-items {
+    font-size:  0.97rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+  }
+  
+  .menu-title {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin: 0.625rem 0 0 1rem;
+    color: #555;
+  }
+  
+  mat-button.button-flex {
+    display: flex;
+    justify-content: center;
+  }
+  
+  mat-list-item.mat-mdc-list-item.mdc-list-item.mat-mdc-list-item-interactive.mat-mdc-list-item-single-line.mdc-list-item--with-one-line {
+    height: 3.5rem;
+  }
