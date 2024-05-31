@@ -6,12 +6,12 @@ const ProductSchema = Schema(
       type: String,
       required: true,
     },
+    price: { type: Number, required: true },
+    stock: { type: Number, default: 0 },
+    description: String,
     img: {
       type: String,
     },
-    description: String,
-    price: Number,
-    quantity: Number,
     category: { type: Schema.Types.ObjectId, ref: "Category" },
     supplier: { type: Schema.Types.ObjectId, ref: "Supplier" },
     usuario: {

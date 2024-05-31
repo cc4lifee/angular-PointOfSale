@@ -20,14 +20,14 @@ router.post(
   login
 );
 
-// router.post(
-//   "/google",
-//   [
-//     check("token", "El token de Google es obligatorio").notEmpty(),
-//     validarCampos,
-//   ],
-//   googleSingIn
-// );
+router.post(
+  "/google",
+  [
+    check("token", "El token de Google es obligatorio").notEmpty(),
+    validarCampos,
+  ],
+  googleSingIn
+);
 
 router.get("/renew", validarJWT, renewToken);
 

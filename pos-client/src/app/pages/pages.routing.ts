@@ -10,14 +10,15 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ClientesComponent } from './clientes/clientes.component';
+import { authGuard } from '../guards/auth.guard';
 
 
 
 const routes: Routes = [
     {
-        path: 'dashboard',
+        path: 'pos',
         component: PagesComponent,
-        // canActivate: [authGuard],
+        canActivate: [authGuard],
         children: [
             { path: '', component: DashboardComponent, data: { titulo: 'Dashboard' }  },
             { path: 'ventas', component: VentasComponent, data: { titulo: 'Ventas' }   },

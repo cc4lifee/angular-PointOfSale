@@ -13,12 +13,15 @@
     left: 0;
     right: 0;
     background: #f3f3f3;
+    
   }
   
   .content-container {
     display: flex;
     flex-direction: column;
-    margin: 20px; /* Ajusta el valor según lo que necesites */
+    margin: 2rem 1rem 1rem 2rem; /* Ajusta el valor según lo que necesites */
+
+    
   }
   
   span.list-items {

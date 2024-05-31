@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { PagesComponent } from './pages.component';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PagesComponent } from './pages.component';
     FormsModule,
     SharedModule,
     RouterModule,
+    MaterialModule,
     // ComponentsModule
   ],
 })

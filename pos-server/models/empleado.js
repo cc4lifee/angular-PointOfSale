@@ -24,6 +24,7 @@ const EmpleadoSchema = Schema(
     salario: {
       type: Number,
     },
+    hireDate: { type: Date, default: Date.now },
     usuario: {
       type: Schema.Types.ObjectId,
       ref: "Usuario",

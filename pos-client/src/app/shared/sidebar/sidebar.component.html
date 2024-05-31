@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="mat-elevation-z8">
+<mat-toolbar color="accent" class="mat-elevation-z8">
     <button (click)="drawer.toggle()" mat-icon-button>
       <mat-icon>menu</mat-icon>
     </button>
@@ -6,6 +6,7 @@
     <span class="example-spacer"></span>
     <button routerLink="" mat-button>Home</button>
   </mat-toolbar>
+
   <mat-drawer-container autosize class="example-container">
     <mat-drawer #drawer opened="true" mode="side" position="start" class="custom-drawer">
       <mat-nav-list>
@@ -106,6 +107,11 @@
         </mat-list-item>
       </mat-nav-list>
     </mat-drawer>
-   
+    <mat-drawer-content >
+      <div class="content-container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+
   </mat-drawer-container>
   

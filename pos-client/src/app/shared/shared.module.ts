@@ -7,6 +7,6 @@ import { MaterialModule } from '../material/material.module';
 @NgModule({
   declarations: [SidebarComponent],
   exports: [SidebarComponent],
-  imports: [CommonModule, RouterModule,MaterialModule],
+  imports: [CommonModule, RouterModule, MaterialModule],
 })
 export class SharedModule {}
