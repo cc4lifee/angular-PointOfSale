@@ -33,6 +33,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PortalModule } from '@angular/cdk/portal';
 import { PlatformModule } from '@angular/cdk/platform';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -90,6 +91,7 @@ import { A11yModule } from '@angular/cdk/a11y';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatCheckboxModule
   ],
 })
 export class MaterialModule {}

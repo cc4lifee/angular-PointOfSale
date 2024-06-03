@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { catchError, map, of, tap } from 'rxjs';
 import { LoginForm } from '../interfaces/login-form.interface';
+import { RegisterForm } from '../interfaces/register-form.interface';
 
 declare const google: any;
 
@@ -73,13 +74,13 @@ export class UsuarioService {
       );
   }
 
-  // crearUsuario(formData: RegisterForm) {
-  //   return this.http.post(`${base_url}/usuarios`, formData).pipe(
-  //     tap((resp: any) => {
-  //       localStorage.setItem('token', resp.token)
-  //     })
-  //   )
-  // }
+  crearUsuario(formData: RegisterForm) {
+    return this.http.post(`${base_url}/usuarios`, formData).pipe(
+      tap((resp: any) => {
+        localStorage.setItem('token', resp.token)
+      })
+    )
+  }
 
   actualizarPerfil(data: { email: string; nombre: string; role?: string }) {
     data = {
