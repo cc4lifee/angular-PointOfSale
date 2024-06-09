@@ -1,1 +1,23 @@
-<h1>Dashboard</h1>
+<mat-card>
+  <div class="toggle-container">
+    <mat-slide-toggle (change)="toggleCategories()">Show/Hide Categories 2 and 3</mat-slide-toggle>
+  </div>
+  <mat-accordion multi="true">
+    <mat-expansion-panel *ngFor="let group of categorizedData; let i = index" class="no-margin" [expanded]="i === 0 || (showAllCategories && i > 0)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ group.category.CATEGORY_NAME }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="data-container">
+        <div class="data-row" *ngFor="let item of group.data">
+          <div class="data-header">{{ item.PERFORMANCE_COLUMN_NAME }}</div>
+          <div class="data-values" *ngFor="let plane of group.performanceData">
+            <div class="data-value">{{ plane[item.PERFORMANCE_COLUMN_NAME] || 'N/A' }}</div>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>

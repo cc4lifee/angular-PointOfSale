@@ -1,0 +1,45 @@
+mat-card {
+  margin: 20px;
+  padding: 20px;
+}
+
+.toggle-container {
+  margin-bottom: 20px;
+}
+
+mat-expansion-panel.no-margin {
+  margin: 0 !important;
+}
+
+.mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+.data-container {
+  overflow-x: auto;
+}
+
+.data-row {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  min-width: 600px; /* Adjust based on your needs */
+}
+
+.data-header {
+  font-weight: bold;
+  flex: 1;
+  min-width: 150px;
+}
+
+.data-values {
+  display: flex;
+  flex: 4;
+  gap: 10px;
+}
+
+.data-value {
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+}
