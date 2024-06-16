@@ -1,23 +1,108 @@
-<mat-card>
-  <div class="toggle-container">
-    <mat-slide-toggle (change)="toggleCategories()">Show/Hide Categories 2 and 3</mat-slide-toggle>
+<div class="container">
+  <!-- Header Row -->
+  <div class="mat-header-row">
+    <div class="mat-header-cell first-column">
+      <button mat-button  class="add-model">+ Add Model</button>
+    </div>
+    <div class="mat-header-cell middle-column"></div>
+    <div class="mat-header-cell last-column">
+      <mat-icon>more_vert</mat-icon>
+    </div>
   </div>
-  <mat-accordion multi="true">
-    <mat-expansion-panel *ngFor="let group of categorizedData; let i = index" class="no-margin" [expanded]="i === 0 || (showAllCategories && i > 0)">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{ group.category.CATEGORY_NAME }}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
 
-      <div class="data-container">
-        <div class="data-row" *ngFor="let item of group.data">
-          <div class="data-header">{{ item.PERFORMANCE_COLUMN_NAME }}</div>
-          <div class="data-values" *ngFor="let plane of group.performanceData">
-            <div class="data-value">{{ plane[item.PERFORMANCE_COLUMN_NAME] || 'N/A' }}</div>
-          </div>
+  <!-- Toggle Row -->
+  <div class="mat-row toggle-row">
+    <div class="mat-cell first-column">
+      <mat-slide-toggle (change)="toggleAllCategories($event)">Show All Fields</mat-slide-toggle>
+    </div>
+    <div class="mat-cell middle-column"></div>
+    <div class="mat-cell last-column"></div>
+  </div>
+
+  <!-- Weights Row -->
+  <div class="mat-row">
+    <div class="mat-cell first-column">Weights</div>
+    <div class="mat-cell middle-column"></div>
+    <div class="mat-cell last-column">
+      <button mat-icon-button (click)="toggleCategory('Weights')">
+        <mat-icon>{{ isCategoryExpanded('Weights') ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Weights Metrics Rows -->
+  <div *ngIf="isCategoryExpanded('Weights')">
+    <div *ngFor="let metric of getUniqueMetrics('Weights')" class="mat-row border-row">
+      <div class="mat-cell first-column">{{ metric }}</div>
+      <div class="mat-cell middle-column">
+        <div class="metric-container">
+          <!-- <div *ngFor="let data of getDataForMetricAndCategory(metric, 'Weights')" class="metric">
+            <input matInput [value]="data.PERFORMANCE_VALUE" class="weight-input">
+            <div>{{ data.AIRCRAFT_NAME }}</div>
+          </div> -->
         </div>
       </div>
-    </mat-expansion-panel>
-  </mat-accordion>
-</mat-card>
+      <div class="mat-cell last-column">
+        <mat-icon>more_vert</mat-icon>
+      </div>
+    </div>
+  </div>
+
+  <!-- Taxi Row -->
+  <div class="mat-row border-row">
+    <div class="mat-cell first-column">Taxi</div>
+    <div class="mat-cell middle-column"></div>
+    <div class="mat-cell last-column">
+      <button mat-icon-button (click)="toggleCategory('Taxi')">
+        <mat-icon>{{ isCategoryExpanded('Taxi') ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Taxi Metrics Rows -->
+  <div *ngIf="isCategoryExpanded('Taxi')">
+    <div *ngFor="let metric of getUniqueMetrics('Taxi')" class="mat-row border-row disabled-row">
+      <div class="mat-cell first-column disabled-row">{{ metric }}</div>
+      <div class="mat-cell middle-column">
+        <div class="metric-container">
+          <!-- <div *ngFor="let data of getDataForMetricAndCategory(metric, 'Taxi')" class="metric">
+            <input matInput [value]="data.PERFORMANCE_VALUE" class="disabled-row">
+            <div class="performance-value">{{ data.PERFORMANCE_VALUE }}</div>
+          </div> -->
+        </div>
+      </div>
+      <div class="mat-cell last-column">
+        <mat-icon>more_vert</mat-icon>
+      </div>
+    </div>
+  </div>
+
+  <!-- Speeds Row -->
+  <div class="mat-row border-row">
+    <div class="mat-cell first-column">Speeds</div>
+    <div class="mat-cell middle-column"></div>
+    <div class="mat-cell last-column">
+      <button mat-icon-button (click)="toggleCategory('Speeds')">
+        <mat-icon>{{ isCategoryExpanded('Speeds') ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Speeds Metrics Rows -->
+  <div *ngIf="isCategoryExpanded('Speeds')">
+    <div *ngFor="let metric of getUniqueMetrics('Speeds')" class="mat-row border-row disabled-row">
+      <div class="mat-cell first-column disabled-row">{{ metric }}</div>
+      <div class="mat-cell middle-column">
+        <div class="metric-container">
+          <!-- <div *ngFor="let data of getDataForMetricAndCategory(metric, 'Speeds')" class="metric">
+            <input matInput [value]="data.PERFORMANCE_VALUE" class="disabled-row">
+            <div class="performance-value">{{ data.PERFORMANCE_VALUE }}</div>
+          </div> -->
+        </div>
+      </div>
+      <div class="mat-cell last-column">
+        <mat-icon>more_vert</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

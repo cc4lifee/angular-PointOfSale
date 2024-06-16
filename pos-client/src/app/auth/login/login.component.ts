@@ -25,17 +25,13 @@ export class LoginComponent implements AfterViewInit {
 
   })
 
-  constructor(private router: Router, private fb: FormBuilder, private usuarioService: UsuarioService) {
-
-  }
+  constructor(private router: Router, private fb: FormBuilder, private usuarioService: UsuarioService) {}
 
   ngAfterViewInit(): void {
     this.googleInit();
   }
 
-
   googleInit() {
-
     google.accounts.id.initialize({
       client_id:
         "782811505148-jdeub7gk0p34v1hko1mk895mbpki1ag2.apps.googleusercontent.com",
@@ -46,7 +42,6 @@ export class LoginComponent implements AfterViewInit {
       this.googleBtn?.nativeElement,
       { theme: "outline", size: "large" } // customization attributes
     );
-
   }
 
   handleCredentialResponse(response: any) {
@@ -56,7 +51,6 @@ export class LoginComponent implements AfterViewInit {
       error: (err) => Swal.fire('Error', err.error.msg, 'error')
     });
   }
-
 
   login() {
     this.usuarioService.login(this.loginForm.value).subscribe({

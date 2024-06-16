@@ -3,41 +3,42 @@ const { dbConnection } = require("./database/config");
 require("dotenv").config();
 const cors = require("cors");
 
-// Crear el servidor Express
+// Create the Express server
 const app = express();
 
-// Configurar CORS
+// Configure CORS
 app.use(cors());
 
-// Carpeta pública
+// Public folder
 app.use(express.static("public"));
 
-// Lectura y parseo del body
+// Read and parse the body
 app.use(express.json());
 
-// Base de datos
+// Database connection
 dbConnection();
 
-// Rutas
-app.use("/api/login", require("./routes/auth"));
-app.use("/api/usuarios", require("./routes/usuarios"));
-app.use("/api/products", require("./routes/products"));
-app.use("/api/categories", require("./routes/categories"));
-app.use("/api/suppliers", require("./routes/suppliers"));
-app.use("/api/ventas", require("./routes/ventas"));
-app.use("/api/clientes", require("./routes/clientes"));
-app.use("/api/empleados", require("./routes/empleados"));
+// Routes
+app.use("/api/login", require("./routes/auth.route"));
+app.use("/api/users", require("./routes/users.route"));
+app.use("/api/products", require("./routes/products.route"));
+app.use("/api/categories", require("./routes/categories.route"));
+app.use("/api/suppliers", require("./routes/suppliers.route"));
+app.use("/api/sales", require("./routes/sales.route"));
+app.use("/api/clients", require("./routes/clients.route"));
+app.use("/api/employees", require("./routes/employees.route"));
+app.use("/api/orders", require("./routes/orders.route"));
+app.use("/api/transactions", require("./routes/transactions.route"));
+app.use("/api/searches", require("./routes/searches.route"));
 
-// Busqueda y Upload descomentados si se requieren en el futuro
-// app.use("/api/todo", require("./routes/busquedas"));
+// Uncomment if needed in the future
 // app.use("/api/upload", require("./routes/uploads"));
 
-// Inicializar servidor solo si no se está en modo de prueba
-
+// Initialize server only if not in test mode
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor Express listening on port ${PORT}`);
+  console.log(`Express server listening on port ${PORT}`);
 });
 
-// Exportar la aplicación para pruebas
+// Export the application for testing
 module.exports = app;

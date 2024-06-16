@@ -1,36 +1,66 @@
-<section id="wrapper" class="d-flex align-items-center justify-content-center min-vh-100">
-    <mat-card class="login-card">
-      <mat-card-content>
-        <form class="form-horizontal form-material" id="loginform" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()">
-          <h3 class="box-title m-b-20">Sign In</h3>
-          <div class="form-group">
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Email" type="email" formControlName="email">
-              <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Invalid email</mat-error>
-            </mat-form-field>
+
+<section class="login-wrapper">
+  <div class="background">
+    <img src="assets/svg/login background/group-background.svg" class="group-background-image">
+  </div>
+  <div class="content-wrapper">
+    <div class="left-side">
+      <h1>Make it yours</h1>
+    </div>
+    <div class="right-side">
+      <h1 class="login-text">Log In</h1>
+
+      <div class="form-section">
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+          <!-- <mat-form-field appearance="fill" class="small-width">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" type="email" formControlName="email">
+            <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Invalid email</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="small-width">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" type="password" formControlName="password">
+            <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Password is required</mat-error>
+          </mat-form-field> -->
+
+          
+          <div class="input-container email-input">
+            <label for="styled-input" class="styled-label">Email</label>
+            <input matInput type="text" id="styled-input" class="styled-input"  type="email" formControlName="email">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Invalid email</mat-error> -->
+
           </div>
-          <div class="form-group">
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Password" type="password" formControlName="password">
-              <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Password is required</mat-error>
-            </mat-form-field>
+
+          <div class="input-container">
+            <label for="styled-input" class="styled-label">Password</label>
+            <input matInput id="styled-input" class="styled-input"  type="password" formControlName="password">
+            <!-- <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Password is required</mat-error> -->
+
           </div>
-          <div class="form-group row">         
-              <mat-checkbox formControlName="remember">Remember me</mat-checkbox>        
+
+          <div class="actions">
+            <a href="/forgot-password" class="text-info">Forgot password?</a>
           </div>
-          <div class="form-group text-center">
-            <button mat-raised-button color="primary" class="full-width" type="submit">Log In</button>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 mb-3 googleBtn">
-              <div #googleBtn id="buttonDiv"></div>
-            </div>
-          </div>
-          <div class="form-group m-b-0 text-center">
-            <p>Don't have an account? <a href="/register" class="text-info"><b>Sign Up</b></a></p>
-          </div>
+          <button mat-raised-button color="primary" class="small-width " type="submit">Log In</button>
+          <p class="sign-up">Don't have an account? <a href="/register"><b>Sign Up</b></a></p>
         </form>
-      </mat-card-content>
-    </mat-card>
-  </section>
-  
+        <div class="divider-container">
+          <div class="divider-line"></div>
+          <div class="divider-text">or</div>
+          <div class="divider-line"></div>
+        </div>
+        <div class="google-login">
+          <div #googleBtn id="buttonDiv" class="google-button"></div>
+        </div>
+
+
+       
+      
+        
+      </div>
+
+     
+      
+    </div>
+  </div>
+</section>
