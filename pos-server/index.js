@@ -18,7 +18,6 @@ app.use(express.json());
 // Database connection
 dbConnection();
 
-console.log('test');
 
 // Routes
 app.use("/api/login", require("./routes/auth.route"));
