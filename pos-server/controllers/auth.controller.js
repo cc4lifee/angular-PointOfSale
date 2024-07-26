@@ -6,6 +6,7 @@ const { googleVerify } = require("../helpers/google-verify");
 
 const login = async (req, res) => {
   const { email, password } = req.body;
+ 
   try {
     const userDB = await User.findOne({ email });
 
@@ -50,6 +51,7 @@ const renewToken = async (req, res = response) => {
 };
 
 const googleSignIn = async (req, res) => {
+ 
   try {
     const { email, name, picture } = await googleVerify(req.body.token);
     const userDB = await User.findOne({ email });
@@ -77,6 +79,7 @@ const googleSignIn = async (req, res) => {
       picture,
       token,
     });
+   
   } catch (error) {
     console.log(error);
     res.status(400).json({

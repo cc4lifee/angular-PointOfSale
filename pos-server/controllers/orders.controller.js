@@ -14,9 +14,12 @@ const getOrders = async (req, res = response) => {
 
 const createOrder = async (req, res = response) => {
   const uid = req.uid;
-  const { products, total, client } = req.body;
-
+  const { products, client } = req.body;
+  
   try {
+    // Calcular el total a partir de los productos
+  const total = products.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
     const order = new Order({
       user: uid,
       products,

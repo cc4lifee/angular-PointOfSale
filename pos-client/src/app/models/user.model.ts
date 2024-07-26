@@ -1,7 +1,7 @@
-export class Usuario {
+export class User {
   constructor(
     public uid: string,
-    public nombre: string,
+    public name: string,
     public email: string,
     public google?: boolean,
     public password?: string, // Opcional si no quieres incluir la contraseña en las respuestas

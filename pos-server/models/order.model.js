@@ -13,7 +13,7 @@ const OrderSchema = new mongoose.Schema(
         price: { type: Number, required: true, min: 0 },
       },
     ],
-    total: { type: Number, required: true, min: 0 },
+    total: { type: Number, min: 0 },
     status: {
       type: String,
       enum: ["pending", "completed", "cancelled"],

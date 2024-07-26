@@ -2,9 +2,8 @@ const { response } = require("express");
 const Transaction = require("../models/transaction.model");
 
 const getTransactions = async (req, res = response) => {
-  const transactions = await Transaction.find()
-    .populate("order", "total")
-    .populate("user", "name");
+  const transactions = await Transaction.find();
+    
 
   res.json({
     ok: true,

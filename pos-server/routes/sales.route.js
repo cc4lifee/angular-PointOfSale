@@ -23,11 +23,6 @@ router.post(
   "/",
   [
     validateJWT,
-    check("products", "Products are required").isArray().notEmpty(),
-    check("products.*.product", "Product ID is required").isMongoId(),
-    check("products.*.quantity", "Quantity is required").isInt({ min: 1 }),
-    check("products.*.price", "Price is required").isFloat({ min: 0 }),
-    check("total", "Total amount is required").isFloat({ min: 0 }),
     check("paymentMethod", "Payment method is required").isIn(["cash", "card"]),
     validateFields,
   ],

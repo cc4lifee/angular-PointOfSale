@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import Swal from 'sweetalert2';
-import { UsuarioService } from '../../services/usuario.service';
+import { UserService } from '../../services/user.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -27,7 +28,7 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private usuarioService: UsuarioService,
+    private userService: UserService,
     private router: Router
   ) {}
 
@@ -38,7 +39,7 @@ export class RegisterComponent {
       return;
     }
 
-    this.usuarioService.crearUsuario(this.registerForm.value).subscribe({
+    this.userService.crearUsuario(this.registerForm.value).subscribe({
       next: () => {
         this.router.navigateByUrl('/');
       },

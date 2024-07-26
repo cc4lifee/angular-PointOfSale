@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import Swal from 'sweetalert2';
-import { UsuarioService } from '../../services/usuario.service';
+
+import { UserService } from '../../services/user.service';
 
 
 declare const google: any;
@@ -25,7 +26,7 @@ export class LoginComponent implements AfterViewInit {
 
   })
 
-  constructor(private router: Router, private fb: FormBuilder, private usuarioService: UsuarioService) {}
+  constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {}
 
   ngAfterViewInit(): void {
     this.googleInit();
@@ -46,14 +47,14 @@ export class LoginComponent implements AfterViewInit {
 
   handleCredentialResponse(response: any) {
     // console.log("Encoded JWT ID token: " + response.credential);
-    this.usuarioService.loginGoogle(response.credential).subscribe({
+    this.userService.loginGoogle(response.credential).subscribe({
       next: () => this.router.navigateByUrl('/'),
       error: (err) => Swal.fire('Error', err.error.msg, 'error')
     });
   }
 
   login() {
-    this.usuarioService.login(this.loginForm.value).subscribe({
+    this.userService.login(this.loginForm.value).subscribe({
       next: () => {
         if (this.loginForm.get('remember')?.value) {
           localStorage.setItem('email', this.loginForm.get('email')?.value);
@@ -61,6 +62,7 @@ export class LoginComponent implements AfterViewInit {
           localStorage.removeItem('email');
         }
         this.router.navigateByUrl('/');
+        
       },
       error: (err) => Swal.fire('Error', err.error.msg, 'error')
     });

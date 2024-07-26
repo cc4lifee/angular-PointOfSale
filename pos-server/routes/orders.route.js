@@ -28,7 +28,6 @@ router.post(
     check("products.*.product", "Product ID is required").isMongoId(),
     check("products.*.quantity", "Quantity is required").isInt({ min: 1 }),
     check("products.*.price", "Price is required").isFloat({ min: 0 }),
-    check("total", "Total amount is required").isFloat({ min: 0 }),
     validateFields,
   ],
   createOrder

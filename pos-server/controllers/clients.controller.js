@@ -1,5 +1,6 @@
 const { response } = require("express");
 const Client = require("../models/client.model");
+const QRCode = require("qrcode");
 
 const getClients = async (req, res = response) => {
   const clients = await Client.find().populate("user", "name");
@@ -105,9 +106,38 @@ const deleteClient = async (req, res = response) => {
   }
 };
 
+const generateClientQRCode = async (req, res = response) => {
+  const id = req.params.id;
+
+  try {
+    const client = await Client.findById(id);
+
+    if (!client) {
+      return res.status(404).json({
+        ok: false,
+        msg: "Client not found by id",
+      });
+    }
+
+    const qrCodeUrl = await QRCode.toDataURL(id);
+    console.log(qrCodeUrl); 
+
+    res.status(201).json({
+      ok: true,
+      qrCodeUrl,
+    });
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: "Please contact the administrator",
+    });
+  }
+};
+
 module.exports = {
   getClients,
   createClient,
   updateClient,
   deleteClient,
+  generateClientQRCode
 };

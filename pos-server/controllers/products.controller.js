@@ -13,6 +13,7 @@ const getProducts = async (req, res = response) => {
 };
 
 const createProduct = async (req, res = response) => {
+  console.log(req.body);
   const uid = req.uid;
   const { category, supplier } = req.body;
   try {
@@ -36,6 +37,7 @@ const createProduct = async (req, res = response) => {
       product: productDB,
     });
   } catch (error) {
+    
     return res.status(500).json({
       ok: false,
       msg: "Please contact the administrator",

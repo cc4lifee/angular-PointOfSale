@@ -14,14 +14,14 @@ const SaleSchema = Schema(
         product: {
           type: Schema.Types.ObjectId,
           ref: "Product",
-          required: true,
+         
           index: true,
         },
-        quantity: { type: Number, required: true, min: 1 },
-        price: { type: Number, required: true, min: 0 },
+        quantity: { type: Number,  min: 1 },
+        price: { type: Number,  min: 0 },
       },
     ],
-    total: { type: Number, required: true, min: 0 },
+    total: { type: Number,  min: 0 },
     paymentMethod: { type: String, enum: ["cash", "card"], required: true },
   },
   { collection: "sales", timestamps: true }

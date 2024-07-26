@@ -11,12 +11,17 @@ const {
   createClient,
   updateClient,
   deleteClient,
+  generateClientQRCode,
 } = require("../controllers/clients.controller");
 
 const router = Router();
 
 // Get
 router.get("/", validateJWT, getClients);
+
+
+// Ruta para generar QR Code del cliente
+router.get("/qr/:id", validateJWT, generateClientQRCode);
 
 // Post
 router.post(

@@ -2,6 +2,7 @@ const { response } = require("express");
 const Sale = require("../models/sale.model");
 const Order = require("../models/order.model");
 const Product = require("../models/product.model");
+const Client = require("../models/client.model");
 const mongoose = require("mongoose");
 const Transaction = require("../models/transaction.model");
 
@@ -29,7 +30,8 @@ const createSale = async (req, res = response) => {
     if (!order) {
       throw new Error(`Order with id ${orderId} does not exist`);
     }
-
+    
+   
     // Check and update product stock
     for (const item of order.products) {
       const product = item.product;
@@ -57,6 +59,13 @@ const createSale = async (req, res = response) => {
     });
 
     await transaction.save({ session });
+
+    // Update the client's purchases
+    await Client.findByIdAndUpdate(
+      order.client,
+      { $push: { purchases: saleDB._id } },
+      { new: true, session }
+    );
 
     await session.commitTransaction();
     session.endSession();
