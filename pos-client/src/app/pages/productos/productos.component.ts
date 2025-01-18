@@ -8,9 +8,10 @@ import { MatSort } from '@angular/material/sort';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-productos',
-  templateUrl: './productos.component.html',
-  styleUrl: './productos.component.css',
+    selector: 'app-productos',
+    templateUrl: './productos.component.html',
+    styleUrl: './productos.component.css',
+    standalone: false
 })
 export class ProductosComponent implements OnInit {
   products: MatTableDataSource<Producto> = new MatTableDataSource();
